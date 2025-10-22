@@ -1,1 +1,17 @@
-<p>login works!</p>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="email">Email:</label>
+    <input id="email" formControlName="email" />
+  </div>
+  <div>
+    <label for="password">Mot de passe:</label>
+    <input id="password" type="password" formControlName="password" />
+  </div>
+  <p>Complétez les champs ci-dessus pour vous connecter.</p>
+  @if (loginForm.invalid) {
+    <p style="color: red;">
+        Veuillez entrer une adresse email valide et un mot de passe.
+    </p>
+  }
+  <button type="submit" [disabled]="!loginForm.valid">Se connecter</button>
+</form>
