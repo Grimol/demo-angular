@@ -28,8 +28,10 @@ export class Login implements OnInit{
   
   onSubmit(): void {
     console.log(this.loginForm.value)
-    this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
-      ? this.router.navigate([''])
-      : alert('Échec de l\'authentification. Veuillez vérifier vos identifiants.')
+    if (this.authService.login(this.loginForm.value.email, this.loginForm.value.password)) {
+      this.router.navigate([''])
+    } else {
+      alert('Échec de l\'authentification. Veuillez vérifier vos identifiants.')
+    }
   }
 }
